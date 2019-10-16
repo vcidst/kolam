@@ -155,7 +155,3 @@ function drawTile() {
   idx += 0.02;
   idx = constrain(idx, 0, 1);
 }
-
-window.onresize = function() {
-  setupTiles(windowWidth, windowHeight);
-};
