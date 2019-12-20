@@ -18,18 +18,18 @@ var gui_kolam;
 /**/
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  
+  console.log("I think the window dimensions are "+windowWidth+" x "+windowHeight);
   // make Dat.GUI control with four options
   kolam = new Kolam();
   gui_kolam = new dat.GUI();
   gui_kolam.add(kolam, 'tsize', 30, 60).name('Size').onChange(function() {
-    setupTiles(windowWidth, windowHeight);
+    setupTiles();
   });
   gui_kolam.add(kolam, 'margin', 2, 200).name('Margin').onChange(function() {
-    setupTiles(windowWidth, windowHeight);
+    setupTiles();
   });  
   gui_kolam.add(kolam, 'tnumber').name('Tiles').min(3).max(20).step(1).onChange(function() {
-    setupTiles(windowWidth, windowHeight);
+    setupTiles();
   });  
   gui_kolam.add(kolam, 'refreshRate').name('Refresh Rate').min(10).max(200).step(10);
 
@@ -76,10 +76,10 @@ function setupTiles() {
   text('Kolam', 30, 60);
   textSize(12);
   text('"Kolam is a form of drawing that is drawn by using rice flour, chalk, chalk powder or rock powder, \
-    often using naturally or synthetically colored powders, in Sri Lanka, the Indian states of Tamil Nadu,\
-    Karnataka, Telangana, Andhra Pradesh, Kerala and some parts of Goa, Maharashtra as well as Indonesia, \
-    Malaysia, Thailand and a few other Asian countries. A Kolam is a geometrical line drawing composed of \
-    curved loops, drawn around a grid pattern of dots." \n\nTaken as-is from Wikipedia - Kolam', 30, 70, 400, 200);
+often using naturally or synthetically colored powders, in Sri Lanka, the Indian states of Tamil Nadu,\
+Karnataka, Telangana, Andhra Pradesh, Kerala and some parts of Goa, Maharashtra as well as Indonesia, \
+Malaysia, Thailand and a few other Asian countries. A Kolam is a geometrical line drawing composed of \
+curved loops, drawn around a grid pattern of dots." \n\nTaken as-is from Wikipedia - Kolam', 30, 70, 400, 200);
   text('No Rights Reserved; Ported from a Processing Sketch by Bárbara Almeida', 30, windowHeight - 30);
   pg = createGraphics(
     kolam.tsize * kolam.tnumber + 2 * kolam.margin,
