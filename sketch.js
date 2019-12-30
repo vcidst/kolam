@@ -30,8 +30,12 @@ function setup() {
   });  
   gui_kolam.add(kolam, 'tnumber').name('Tiles').min(3).max(20).step(1).onChange(function() {
     setupTiles();
+  });
+  gui_kolam.add(kolam, 'rotation').name('Rotation').min(0).max(2*Math.PI).step(QUARTER_PI/4).onChange(function() {
+    setupTiles();
   });  
   gui_kolam.add(kolam, 'refreshRate').name('Refresh Rate').min(10).max(200).step(10);
+
 
   bgcolor = color(random(50), random(50), random(50));
   setupTiles();
@@ -44,6 +48,7 @@ function draw() {
   
   push();
   translate(width / 2, height / 2);
+  rotate(kolam.rotation);
   imageMode(CENTER);
   image(pg, 0, 0);
   pop();
@@ -59,6 +64,7 @@ function Kolam() {
   this.margin = 5;
   this.tnumber = 5;
   this.refreshRate = 100;
+  this.rotation = QUARTER_PI;
 }
 
 /**/
